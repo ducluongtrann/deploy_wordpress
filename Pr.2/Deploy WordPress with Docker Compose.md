@@ -1,25 +1,29 @@
-# Virtualization and Cloud
-## Week 1 - Deploy Wordpress in several ways
-### Practice 1
+# Practice 2
+---
+## Requirements:
 ```
-Setup VirtualBox
-Create Ubuntu virtual machine
-Setup Docker inside VM
-Deploy WordPress with Command Line
-```
-### Practice 2
-```
-Create two Ubuntu virtual machines
-Setup Docker inside VMs
 Deploy WordPress with Docker Compose
+
 ```
-### Practice 3
+---
+## Guide
+After complete practice 1, we have already install VituralBox, Ubuntu and Docker
+**1. Install Docker compose**
+- Run this command to download the current stable release of Docker Compose
 ```
-Deploy WordPress with Command Line on two virtual machines
-Requirements
-- MariaDB container on VM1
-- WordPress container on VM2
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+```
+- Apply executable permissions to the binary
+```
+$ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+**2. Dploy WordPress with Docker-compose
+```
+$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-wordpress/master/docker-compose.yml > docker-compose.yml
+$ docker-compose up -d
+```
+**Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)**
 
-
+<img src="./pr2_result.png">

@@ -116,5 +116,6 @@ $ sudo docker run -d --name wordpress \
    bitnami/wordpress:latest
 ```
 
-**Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)
+**Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)**
+
 <img src="./pr1_result.png">
