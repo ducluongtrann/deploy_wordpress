@@ -16,10 +16,10 @@ Deploy WordPress with Docker Compose
 ### Practice 3
 ```
 Deploy WordPress with Command Line on two virtual machines
-```
 #### Requirements
 > MariaDB container on VM1
 > WordPress container on VM2
+```
 
 
 
