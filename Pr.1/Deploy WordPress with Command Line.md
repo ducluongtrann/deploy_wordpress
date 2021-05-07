@@ -117,4 +117,4 @@ $ sudo docker run -d --name wordpress \
 ```
 
 **Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)
-<img src="./ - pr1_result.png">
+<img src="./pr1_result.png">
