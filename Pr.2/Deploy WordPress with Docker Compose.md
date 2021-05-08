@@ -24,6 +24,5 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 $ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-wordpress/master/docker-compose.yml > docker-compose.yml
 $ docker-compose up -d
 ```
-**Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)**
-
+**Then, open web browser and access *localhost* to see result**
 <img src="./pr2_result.png">

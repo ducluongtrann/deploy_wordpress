@@ -1,29 +1,45 @@
-# Practice 2
+# Practice 3
 ---
 ## Requirements:
 ```
-Deploy WordPress with Docker Compose
+• Create two Ubuntu virtual machines
+• Setup Docker inside VMs
+• Deploy WordPress with Command Line on two virtual machines
 
 ```
 ---
 ## Guide
-After complete practice 1, we have already install VituralBox, Ubuntu and Docker
-**1. Install Docker compose**
-- Run this command to download the current stable release of Docker Compose
+Create one more Virtual Machine and setup Docker inside this VMs
+**1. On VM 1**
+- Create mariadb volume
 ```
-$ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo docker volume create --name mariadb_data
+```
+Run and connect MariaBD with network
+$ sudo docker run -d --name mariadb \
+    --env ALLOW_EMPTY_PASSWORD=yes \
+    --env MARIADB_USER=bn_wordpress \
+    --env MARIADB_PASSWORD=luong123 \
+    --env MARIADB_DATABASE=bitnami_wordpress \
+    --network wordpress-network \
+    --volume mariadb_data:/bitnami/mariadb \
+    bitnami/mariadb:latest
+```
+**1. On VM 2**
+- Create Wordpress Volume and connect it to network
+```
+$ sudo docker volume create --name wordpress_data
+$ sudo docker run -d --name wordpress \
+    -p 8080:8080 -p 8443:8443 \
+    --env ALLOW_EMPTY_PASSWORD=yes \
+    --env WORDPRESS_DATABASE_USER=bn_wordpress \
+    --env WORDPRESS_DATABASE_PASSWORD=bitnami \
+    --env WORDPRESS_DATABASE_NAME=bitnami_wordpress \
+    --network wordpress-network \
+    --volume wordpress_data:/bitnami/wordpress \
+    bitnami/wordpress:latest
 
 ```
-- Apply executable permissions to the binary
-```
-$ sudo chmod +x /usr/local/bin/docker-compose
-```
+**Then, open web browser and access local to see result**
 
-**2. Dploy WordPress with Docker-compose
-```
-$ curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-wordpress/master/docker-compose.yml > docker-compose.yml
-$ docker-compose up -d
-```
-**Then, open web browser and access that link to see result [https://localhost:8443](https://localhost:8443)**
-
-<img src="./pr2_result.png">
+<img src="./pr3_result.png">
